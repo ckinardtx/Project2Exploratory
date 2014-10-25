@@ -14,21 +14,21 @@ coalcomb.scc <- subset(SCC, EI.Sector %in% c("Fuel Comb - Comm/Instutional - Coa
 ## Step 3: comparisons to prevent ommissions
 coalcomb.scc1 <- subset(SCC, grepl("Comb", Short.Name) & grepl("Coal", Short.Name))
 
-nrow(coalcomb.scc) #evaluate: rows 0
+nrow(coalcomb.scc) #evaluate: rows 0 -- 35
 
-nrow(coalcomb.scc1) #evaluate: rows 91
+nrow(coalcomb.scc1) #evaluate: rows --  91
 
 ## Step 4: set the differences
 dif1 <- setdiff(coalcomb.scc$SCC, coalcomb.scc1$SCC)
 dif2 <- setdiff(coalcomb.scc1$SCC, coalcomb.scc$SCC)
 
-length(dif1)#0
+length(dif1)  # 0 --- 6
 
-length(dif2)#91
+length(dif2) # 91 --- 62
 
 ### We should look at the union of these sets
 coalcomb.codes <- union(coalcomb.scc$SCC, coalcomb.scc1$SCC)
-length(coalcomb.codes) #91
+length(coalcomb.codes) # 91 --- 97
 
 ## Step 5: Repeat the subset again
 coal.comb <- subset(NEI, SCC %in% coalcomb.codes)
